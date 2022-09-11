@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Me{% endblock title %}
+
+{% block body %}
+    <div class="container my-3">
+        <h2>Contact Me</h2>
+        <form action="/api/contact" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone number (with country code)</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="3" placeholder="Describe your concern"></textarea>
+          </div>
+          <div class="mb-3">
+            <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock body %}
